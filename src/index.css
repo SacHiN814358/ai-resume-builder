@@ -73,7 +73,7 @@
     print-color-adjust: exact !important;
   }
 
-  header, nav, .no-print, [role="navigation"], .editor-column, #form-editor-container, .preview-canvas-toolbar {
+  .no-print, nav, [role="navigation"], .editor-column, #form-editor-container, .preview-canvas-toolbar {
     display: none !important;
     height: 0 !important;
     margin: 0 !important;

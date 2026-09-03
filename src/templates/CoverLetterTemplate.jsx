@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { LinkedinIcon } from '../components/Icons';
 
@@ -9,7 +9,7 @@ export default function CoverLetterTemplate({ data, coverLetter, theme }) {
     <div className="w-full bg-white text-slate-900 p-10 min-h-[1050px] flex flex-col font-sans leading-relaxed text-left selection:bg-indigo-100 print-page shadow-sm">
       
       {/* Sender Header Banner */}
-      <header className="border-b-2 pb-6 mb-8" style={{ borderColor: theme.primary }}>
+      <div className="resume-header-section border-b-2 pb-6 mb-8" style={{ borderColor: theme.primary }}>
         <h1 className="text-3xl font-extrabold tracking-tight mb-1" style={{ color: theme.primary }}>
           {personalInfo.fullName || 'Candidate Name'}
         </h1>
@@ -50,7 +50,7 @@ export default function CoverLetterTemplate({ data, coverLetter, theme }) {
             </div>
           )}
         </div>
-      </header>
+      </div>
 
       {/* Date & Recipient Details */}
       <div className="mb-6 text-xs text-slate-700 space-y-1">

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 export default function AtsTemplate({ data, theme }) {
   const { personalInfo, experiences, education, skills, projects, certifications } = data;
@@ -7,7 +7,7 @@ export default function AtsTemplate({ data, theme }) {
     <div className="w-full bg-white text-black p-8 min-h-[1050px] flex flex-col font-serif leading-normal text-left selection:bg-slate-200 print-page" style={{ fontFamily: 'Georgia, Times New Roman, serif' }}>
       
       {/* Centered ATS Header */}
-      <header className="text-center pb-4 mb-4 border-b border-black">
+      <div className="resume-header-section text-center pb-4 mb-4 border-b border-black">
         <h1 className="text-2xl font-bold tracking-normal uppercase mb-1 text-black">
           {personalInfo.fullName || 'Your Full Name'}
         </h1>
@@ -24,7 +24,7 @@ export default function AtsTemplate({ data, theme }) {
           {personalInfo.github && <span>• {personalInfo.github.replace(/^https?:\/\//, '')}</span>}
           {personalInfo.website && <span>• {personalInfo.website.replace(/^https?:\/\//, '')}</span>}
         </div>
-      </header>
+      </div>
 
       {/* Professional Summary */}
       {personalInfo.summary && (

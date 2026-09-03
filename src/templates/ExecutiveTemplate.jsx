@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { LinkedinIcon } from '../components/Icons';
 
@@ -9,7 +9,7 @@ export default function ExecutiveTemplate({ data, theme }) {
     <div className="w-full bg-slate-50/50 text-slate-800 p-8 min-h-[1050px] flex flex-col font-sans leading-normal text-left selection:bg-slate-200 print-page">
       
       {/* Executive Header */}
-      <header className="bg-white border-b-4 shadow-sm p-6 -mx-8 -mt-8 mb-6 text-center" style={{ borderColor: theme.primary }}>
+      <div className="resume-header-section bg-white border-b-4 shadow-sm p-6 -mx-8 -mt-8 mb-6 text-center" style={{ borderColor: theme.primary }}>
         <h1 className="text-3xl font-serif font-black tracking-tight text-slate-900 mb-1">
           {personalInfo.fullName || 'Your Full Name'}
         </h1>
@@ -50,7 +50,7 @@ export default function ExecutiveTemplate({ data, theme }) {
             </div>
           )}
         </div>
-      </header>
+      </div>
 
       {/* Summary */}
       {personalInfo.summary && (

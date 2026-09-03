@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Mail, Phone, MapPin, Globe, Award, Briefcase, GraduationCap, FolderGit2 } from 'lucide-react';
 import { LinkedinIcon, GithubIcon } from '../components/Icons';
 
@@ -9,7 +9,7 @@ export default function ModernTemplate({ data, theme }) {
     <div className="w-full bg-white text-slate-800 p-8 min-h-[1050px] flex flex-col font-sans leading-normal text-left selection:bg-indigo-100 print-page" style={{ color: '#1e293b' }}>
       
       {/* Header Banner */}
-      <header className="border-b-2 pb-5 mb-5" style={{ borderColor: theme.primary }}>
+      <div className="resume-header-section border-b-2 pb-5 mb-5" style={{ borderColor: theme.primary }}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight mb-1" style={{ color: theme.primary }}>
@@ -67,7 +67,7 @@ export default function ModernTemplate({ data, theme }) {
             {personalInfo.summary}
           </p>
         )}
-      </header>
+      </div>
 
       {/* Main Two-Column Layout */}
       <div className="grid grid-cols-12 gap-6 flex-1">
