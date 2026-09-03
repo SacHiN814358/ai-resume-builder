@@ -1,23 +1,28 @@
 import confetti from 'canvas-confetti';
-import html2pdf from 'html2pdf.js';
+import html2pdfModule from 'html2pdf.js';
 
 export async function exportToPdf({ elementId = 'resume-export-container', filename = 'Resume.pdf' }) {
   const sourceElement = document.getElementById(elementId);
   if (!sourceElement) {
     console.error('Export element not found:', elementId);
+    window.print();
     return;
   }
 
-  // Create an off-screen clone with exact A4 dimensions and NO CSS transforms (scale)
+  const cleanFilename = filename.endsWith('.pdf') ? filename : `${filename}.pdf`;
+
+  // Create an isolated clean clone with exact A4 dimensions and NO borders/transforms
   const clone = sourceElement.cloneNode(true);
-  clone.style.width = '794px'; // Exact A4 width at 96 DPI
-  clone.style.minHeight = '1123px';
+  clone.style.width = '794px'; // 210mm at 96 DPI
+  clone.style.minHeight = '1120px';
   clone.style.margin = '0';
-  clone.style.padding = '0';
-  clone.style.transform = 'none';
+  clone.style.padding = '36px 44px';
+  clone.style.border = 'none';
+  clone.style.outline = 'none';
   clone.style.boxShadow = 'none';
+  clone.style.transform = 'none';
   clone.style.background = '#ffffff';
-  clone.style.color = '#000000';
+  clone.style.color = '#111827';
   clone.style.position = 'fixed';
   clone.style.top = '-99999px';
   clone.style.left = '-99999px';
@@ -25,10 +30,8 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
 
   document.body.appendChild(clone);
 
-  const cleanFilename = filename.endsWith('.pdf') ? filename : `${filename}.pdf`;
-
   const opt = {
-    margin: [6, 6, 6, 6], // Clean 6mm margins
+    margin: [8, 8, 8, 8],
     filename: cleanFilename,
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { 
@@ -44,7 +47,11 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
   };
 
   try {
-    await html2pdf().set(opt).from(clone).save();
+    const fn = typeof html2pdfModule === 'function' ? html2pdfModule : (html2pdfModule?.default || window.html2pdf);
+    if (!fn) {
+      throw new Error('html2pdf library could not be resolved');
+    }
+    await fn().set(opt).from(clone).save();
 
     // Trigger celebration confetti
     confetti({
@@ -53,8 +60,7 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
       origin: { y: 0.7 }
     });
   } catch (error) {
-    console.error('PDF Generation error:', error);
-    // Fallback print only if html2pdf fails
+    console.warn('Direct PDF export error, opening clean print dialog:', error);
     window.print();
   } finally {
     if (document.body.contains(clone)) {
