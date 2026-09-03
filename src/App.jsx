@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ResumeProvider, useResume } from './context/ResumeContext';
 import Navbar from './components/Navbar';
 import ResumeEditor from './components/ResumeEditor';
@@ -28,13 +28,15 @@ function AppContent() {
     <div className="min-h-screen bg-[#090a0f] text-zinc-100 flex flex-col font-sans selection:bg-indigo-500/20">
       
       {/* Top Main Navigation */}
-      <Navbar 
-        onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
-        onExportPdf={handleExportPdf}
-      />
+      <div className="no-print">
+        <Navbar 
+          onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
+          onExportPdf={handleExportPdf}
+        />
+      </div>
 
       {/* Mobile Tab Toggle (Editor vs Preview) */}
-      <div className="lg:hidden flex items-center justify-center p-2 bg-[#0c0e16] border-b border-zinc-800">
+      <div className="no-print lg:hidden flex items-center justify-center p-2 bg-[#0c0e16] border-b border-zinc-800">
         <div className="flex bg-[#141724] p-0.5 rounded-lg border border-zinc-800 w-full max-w-xs">
           <button
             onClick={() => setMobileView('editor')}
@@ -65,14 +67,14 @@ function AppContent() {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         
         {/* Left Column: Form Editor (5 cols on large screens) */}
-        <div className={`lg:col-span-5 border-r border-zinc-800/80 bg-[#090a0f] flex flex-col ${
+        <div id="form-editor-container" className={`no-print editor-column lg:col-span-5 border-r border-zinc-800/80 bg-[#090a0f] flex flex-col ${
           mobileView === 'editor' ? 'block' : 'hidden lg:flex'
         }`}>
           <ResumeEditor />
         </div>
 
         {/* Right Column: Live Resume Preview (7 cols on large screens) */}
-        <div className={`lg:col-span-7 bg-[#07080d] flex flex-col ${
+        <div className={`preview-column lg:col-span-7 bg-[#07080d] flex flex-col ${
           mobileView === 'preview' ? 'block' : 'hidden lg:flex'
         }`}>
           <ResumePreview />

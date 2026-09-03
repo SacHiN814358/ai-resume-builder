@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useResume } from '../context/ResumeContext';
 import ModernTemplate from './ModernTemplate';
 import AtsTemplate from './AtsTemplate';
@@ -30,7 +30,7 @@ export default function ResumePreview() {
     <div className="flex flex-col h-full bg-[#07080d]">
       
       {/* Sleek Canvas Toolbar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[#0c0e16] border-b border-zinc-800/80 text-xs text-zinc-400">
+      <div className="no-print preview-canvas-toolbar flex items-center justify-between px-4 py-2 bg-[#0c0e16] border-b border-zinc-800/80 text-xs text-zinc-400">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
           <span className="font-medium text-zinc-300 text-[11px] uppercase tracking-wider">
@@ -71,7 +71,7 @@ export default function ResumePreview() {
       {/* Canvas Paper Container */}
       <div className="flex-1 overflow-auto p-4 md:p-8 flex justify-center items-start">
         <div 
-          className="transition-transform duration-150 origin-top shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-sm overflow-hidden bg-white max-w-[800px] w-full"
+          className="preview-paper-wrapper transition-transform duration-150 origin-top shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-sm overflow-hidden bg-white max-w-[800px] w-full"
           style={{ transform: `scale(${zoomLevel / 100})` }}
         >
           <div id="resume-export-container">

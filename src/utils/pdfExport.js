@@ -1,4 +1,4 @@
-﻿import confetti from 'canvas-confetti';
+import confetti from 'canvas-confetti';
 
 export async function exportToPdf({ elementId = 'resume-export-container', filename = 'Resume.pdf' }) {
   const element = document.getElementById(elementId);
@@ -9,18 +9,20 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
   }
 
   try {
-    // Dynamic import to ensure browser compatibility
-    const html2pdf = (await import('html2pdf.js')).default;
+    // Import html2pdf
+    const html2pdfModule = await import('html2pdf.js');
+    const html2pdf = html2pdfModule.default || html2pdfModule;
 
     const opt = {
-      margin: [10, 10, 10, 10], // top, left, bottom, right in mm
+      margin: 0,
       filename: filename.endsWith('.pdf') ? filename : `${filename}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { 
-        scale: 2, 
+        scale: 2.5, 
         useCORS: true, 
         letterRendering: true,
-        logging: false
+        logging: false,
+        backgroundColor: '#ffffff'
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
@@ -30,12 +32,12 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
 
     // Trigger celebration confetti
     confetti({
-      particleCount: 75,
+      particleCount: 80,
       spread: 70,
       origin: { y: 0.7 }
     });
   } catch (error) {
-    console.warn('html2pdf failed, falling back to window.print():', error);
+    console.warn('html2pdf direct export failed, triggering clean print:', error);
     window.print();
   }
 }
