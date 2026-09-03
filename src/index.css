@@ -82,9 +82,12 @@
     print-color-adjust: exact !important;
   }
 
-  .no-print, nav, [role="navigation"], .editor-column, #form-editor-container, .preview-canvas-toolbar {
+  .no-print, nav, [role="navigation"], .editor-column, #form-editor-container, .preview-canvas-toolbar, canvas {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
     height: 0 !important;
+    width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
