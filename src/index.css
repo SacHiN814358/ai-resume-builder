@@ -120,10 +120,10 @@
     transform: none !important;
   }
 
-  /* 6. The actual resume template content gets white bg */
+  /* 6. The actual resume template content gets white bg + clean black border */
   .print-page {
     background: #ffffff !important;
-    border: none !important;
+    border: 2px solid #000000 !important;
     box-shadow: none !important;
     margin: 0 !important;
     width: 100% !important;
