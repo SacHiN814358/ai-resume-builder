@@ -55,19 +55,29 @@
 
 /* Print Specific Styles for 1:1 Pixel Perfect A4 PDF */
 @media print {
+  *, *::before, *::after {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
   html, body {
     background: #ffffff !important;
     color: #000000 !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  header, nav, .no-print, [role="navigation"], .editor-column, #form-editor-container {
+  header, nav, .no-print, [role="navigation"], .editor-column, #form-editor-container, .preview-canvas-toolbar {
     display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   main {
@@ -75,7 +85,9 @@
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
-    background: transparent !important;
+    background: #ffffff !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .preview-column {
@@ -83,11 +95,8 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: transparent !important;
-  }
-
-  .preview-canvas-toolbar {
-    display: none !important;
+    background: #ffffff !important;
+    height: auto !important;
   }
 
   .preview-paper-wrapper {
@@ -99,6 +108,7 @@
     max-width: 100% !important;
     transform: none !important;
     background: #ffffff !important;
+    height: auto !important;
   }
 
   #resume-export-container {
@@ -107,6 +117,7 @@
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
+    height: auto !important;
   }
   
   @page {
