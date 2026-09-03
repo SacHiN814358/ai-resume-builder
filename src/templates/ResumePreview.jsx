@@ -71,10 +71,10 @@ export default function ResumePreview() {
       {/* Canvas Paper Container */}
       <div className="flex-1 overflow-auto p-4 md:p-8 flex justify-center items-start">
         <div 
-          className="preview-paper-wrapper transition-transform duration-150 origin-top shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-sm overflow-hidden bg-white max-w-[800px] w-full"
+          className="preview-paper-wrapper transition-transform duration-150 origin-top bg-white max-w-[800px] w-full border border-zinc-200 shadow-xl"
           style={{ transform: `scale(${zoomLevel / 100})` }}
         >
-          <div id="resume-export-container">
+          <div id="resume-export-container" className="bg-white m-0 p-0">
             {renderTemplate()}
           </div>
         </div>

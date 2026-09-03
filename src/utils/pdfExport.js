@@ -11,29 +11,42 @@ export async function exportToPdf({ elementId = 'resume-export-container', filen
 
   const cleanFilename = filename.endsWith('.pdf') ? filename : `${filename}.pdf`;
 
-  // Create an isolated clean clone with exact A4 dimensions and NO borders/transforms
+  // Create an isolated clean clone with exact A4 dimensions and NO borders/shadows
   const clone = sourceElement.cloneNode(true);
-  clone.style.width = '794px'; // 210mm at 96 DPI
-  clone.style.minHeight = '1120px';
+  clone.style.width = '794px'; // Exactly 210mm at 96 DPI
   clone.style.margin = '0';
-  clone.style.padding = '36px 44px';
+  clone.style.padding = '0';
   clone.style.border = 'none';
   clone.style.outline = 'none';
   clone.style.boxShadow = 'none';
+  clone.style.borderRadius = '0';
   clone.style.transform = 'none';
-  clone.style.background = '#ffffff';
+  clone.style.backgroundColor = '#ffffff';
   clone.style.color = '#111827';
   clone.style.position = 'fixed';
   clone.style.top = '-99999px';
   clone.style.left = '-99999px';
   clone.style.zIndex = '-99999';
 
+  // Strip all shadows, outlines, and border artifacts from children
+  clone.querySelectorAll('*').forEach(el => {
+    el.style.boxShadow = 'none';
+    el.style.textShadow = 'none';
+    el.style.outline = 'none';
+    if (el.classList.contains('print-page')) {
+      el.style.border = 'none';
+      el.style.boxShadow = 'none';
+      el.style.padding = '24px 32px';
+      el.style.margin = '0';
+    }
+  });
+
   document.body.appendChild(clone);
 
   const opt = {
-    margin: [8, 8, 8, 8],
+    margin: 0,
     filename: cleanFilename,
-    image: { type: 'jpeg', quality: 0.98 },
+    image: { type: 'jpeg', quality: 0.99 },
     html2canvas: { 
       scale: 2, 
       useCORS: true, 
