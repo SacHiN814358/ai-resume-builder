@@ -13,15 +13,7 @@ function AppContent() {
   const [mobileView, setMobileView] = useState('editor'); // 'editor' | 'preview'
 
   const handleExportPdf = () => {
-    const rawName = resumeData.personalInfo.fullName || 'Candidate';
-    const cleanName = rawName.replace(/[^a-zA-Z0-9]/g, '_');
-    const docType = activeTab === 'cover-letter' ? 'Cover_Letter' : 'Resume';
-    const filename = `${cleanName}_${docType}.pdf`;
-    
-    exportToPdf({
-      elementId: 'resume-export-container',
-      filename
-    });
+    exportToPdf();
   };
 
   return (
