@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
@@ -22,7 +22,7 @@ describe('ResuMate AI Application Integration Tests', () => {
     expect(screen.getByText(/Cover Letter Builder/i)).toBeInTheDocument();
     
     // Switch back to Resume
-    const resumeBtn = screen.getByRole('button', { name: /Resume/i });
+    const resumeBtn = screen.getByRole('button', { name: /^Resume$/i });
     fireEvent.click(resumeBtn);
     expect(screen.getByText(/Personal Information/i)).toBeInTheDocument();
   });

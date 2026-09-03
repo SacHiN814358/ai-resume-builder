@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useResume, THEME_COLORS, TEMPLATES } from '../context/ResumeContext';
 import { 
   Sparkles, 
@@ -219,38 +219,42 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
             <span className="hidden sm:inline">{apiKey ? 'AI Active' : 'Set Gemini Key'}</span>
           </button>
 
-          {/* Quick Actions Menu (Load sample, Import, Clear) */}
+          {/* Quick Actions Menu (Load sample, Import, Export JSON) */}
           <div className="flex items-center gap-1 bg-slate-800/80 p-1 rounded-lg border border-slate-700/60">
             <button
               onClick={loadSampleData}
-              className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-700 rounded transition-all"
-              title="Load Sample Data"
+              className="flex items-center gap-1 px-2 py-1 text-slate-300 hover:text-white hover:bg-slate-700 rounded text-xs transition-all"
+              title="Load Sample / Demo Data"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="w-3.5 h-3.5 text-indigo-400" />
+              <span className="hidden xl:inline text-[11px]">Sample Data</span>
             </button>
-            <label className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-700 rounded cursor-pointer transition-all" title="Import JSON">
+            <label className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-700 rounded cursor-pointer transition-all" title="Import JSON Backup">
               <Upload className="w-3.5 h-3.5" />
               <input type="file" accept=".json" onChange={handleJsonImport} className="hidden" />
             </label>
             <button
               onClick={handleJsonExport}
               className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-700 rounded transition-all"
-              title="Backup as JSON"
+              title="Backup Resume as JSON"
             >
               <FileSpreadsheet className="w-3.5 h-3.5" />
             </button>
-            <button
-              onClick={() => {
-                if (confirm('Are you sure you want to clear all data and start fresh?')) {
-                  clearAllData();
-                }
-              }}
-              className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded transition-all"
-              title="Clear Everything"
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
           </div>
+
+          {/* + New Blank Resume Button */}
+          <button
+            onClick={() => {
+              if (confirm('Start a fresh new blank resume? (You can always click "Sample Data" to restore demo content)')) {
+                clearAllData();
+              }
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 rounded-lg transition-all cursor-pointer"
+            title="Clear all fields and start a fresh resume"
+          >
+            <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+            <span>+ New Resume</span>
+          </button>
 
           {/* Export PDF Button */}
           <button
