@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useResume, THEME_COLORS, TEMPLATES } from '../context/ResumeContext';
 import { 
   FileText, 
@@ -76,7 +76,7 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-sm font-bold tracking-tight text-zinc-100">
-                ResuMate
+                ResuCraft
               </span>
               <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
                 AI

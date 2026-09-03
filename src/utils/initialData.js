@@ -1,4 +1,4 @@
-﻿export const sampleResumeData = {
+export const sampleResumeData = {
   personalInfo: {
     fullName: "Sachin Gupta",
     jobTitle: "Senior Frontend Engineer & React Specialist",
@@ -67,7 +67,7 @@
     },
     {
       id: "proj-2",
-      name: "ResuMate AI Builder",
+      name: "ResuCraft AI Builder",
       tech: "React, Google Gemini API, Tailwind CSS, html2pdf",
       link: "https://resumate-ai.vercel.app",
       github: "https://github.com/SacHiN814358/resumate-ai",

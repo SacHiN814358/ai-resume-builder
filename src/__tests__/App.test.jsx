@@ -3,10 +3,10 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
 
-describe('ResuMate AI Application Integration Tests', () => {
+describe('ResuCraft AI Application Integration Tests', () => {
   it('renders the branding and main navigation', () => {
     render(<App />);
-    const brandElements = screen.getAllByText(/ResuMate/i);
+    const brandElements = screen.getAllByText(/ResuCraft/i);
     expect(brandElements.length).toBeGreaterThan(0);
     expect(screen.getByRole('button', { name: /^Resume$/i })).toBeInTheDocument();
   });

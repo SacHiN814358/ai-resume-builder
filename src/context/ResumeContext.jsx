@@ -1,11 +1,11 @@
-﻿import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { sampleResumeData, emptyResumeData, sampleCoverLetter } from '../utils/initialData';
 
 const ResumeContext = createContext(null);
 
-const STORAGE_KEY_RESUME = 'resumate_resume_data_v1';
-const STORAGE_KEY_LETTER = 'resumate_cover_letter_v1';
-const STORAGE_KEY_SETTINGS = 'resumate_settings_v1';
+const STORAGE_KEY_RESUME = 'resucraft_resume_data_v1';
+const STORAGE_KEY_LETTER = 'resucraft_cover_letter_v1';
+const STORAGE_KEY_SETTINGS = 'resucraft_settings_v1';
 
 export const THEME_COLORS = [
   { id: 'indigo', name: 'Indigo Blue', primary: '#4f46e5', secondary: '#e0e7ff', text: '#312e81', border: '#c7d2fe' },
