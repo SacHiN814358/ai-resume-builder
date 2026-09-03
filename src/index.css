@@ -73,6 +73,7 @@
     color: #000000 !important;
     padding: 0 !important;
     margin: 0 !important;
+    border: none !important;
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
@@ -86,6 +87,7 @@
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: none !important;
   }
 
   main {
@@ -103,13 +105,18 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: none !important;
     background: #ffffff !important;
     height: auto !important;
   }
 
-  .preview-paper-wrapper {
+  .preview-paper-wrapper, 
+  #resume-export-container, 
+  .print-page {
     box-shadow: none !important;
     border: none !important;
+    border-width: 0 !important;
+    outline: none !important;
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
@@ -117,22 +124,6 @@
     transform: none !important;
     background: #ffffff !important;
     height: auto !important;
-  }
-
-  #resume-export-container {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #ffffff !important;
-    height: auto !important;
-  }
-
-  .print-page {
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    box-shadow: none !important;
     break-inside: auto !important;
   }
 
