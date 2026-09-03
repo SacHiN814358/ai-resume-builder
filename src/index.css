@@ -53,11 +53,11 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
-/* Print Specific Styles for 1:1 Pixel Perfect A4 PDF */
+/* Print Specific Styles for 1:1 Pixel Perfect Single-Page A4 PDF */
 @media print {
   *, *::before, *::after {
-    background-color: transparent !important;
     box-shadow: none !important;
+    text-shadow: none !important;
   }
 
   html, body {
@@ -118,6 +118,24 @@
     padding: 0 !important;
     background: #ffffff !important;
     height: auto !important;
+  }
+
+  .print-page {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    break-inside: auto !important;
+  }
+
+  .resume-header-section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
   
   @page {
