@@ -69,7 +69,7 @@ export const sampleResumeData = {
       id: "proj-2",
       name: "ResuCraft AI Builder",
       tech: "React, Google Gemini API, Tailwind CSS, html2pdf",
-      link: "https://sachin-resucraft.vercel.app",
+      link: "https://resucraft-pro.vercel.app",
       github: "https://github.com/SacHiN814358/ai-resume-builder",
       description: "An AI-powered resume and cover letter builder with instant bullet enhancement, ATS formatting, and PDF export."
     }
