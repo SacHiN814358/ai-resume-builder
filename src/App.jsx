@@ -25,7 +25,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#090a0f] text-zinc-100 flex flex-col font-sans selection:bg-indigo-500/20">
       
       {/* Top Main Navigation */}
       <Navbar 
@@ -34,14 +34,14 @@ function AppContent() {
       />
 
       {/* Mobile Tab Toggle (Editor vs Preview) */}
-      <div className="lg:hidden flex items-center justify-center p-2 bg-slate-900 border-b border-slate-800">
-        <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 w-full max-w-xs">
+      <div className="lg:hidden flex items-center justify-center p-2 bg-[#0c0e16] border-b border-zinc-800">
+        <div className="flex bg-[#141724] p-0.5 rounded-lg border border-zinc-800 w-full max-w-xs">
           <button
             onClick={() => setMobileView('editor')}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-md transition-all ${
               mobileView === 'editor'
-                ? 'bg-indigo-600 text-white shadow'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-zinc-800 text-white shadow-xs'
+                : 'text-zinc-400 hover:text-white'
             }`}
           >
             <Edit3 className="w-3.5 h-3.5" />
@@ -49,10 +49,10 @@ function AppContent() {
           </button>
           <button
             onClick={() => setMobileView('preview')}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-md transition-all ${
               mobileView === 'preview'
-                ? 'bg-indigo-600 text-white shadow'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-zinc-800 text-white shadow-xs'
+                : 'text-zinc-400 hover:text-white'
             }`}
           >
             <Eye className="w-3.5 h-3.5" />
@@ -65,14 +65,14 @@ function AppContent() {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         
         {/* Left Column: Form Editor (5 cols on large screens) */}
-        <div className={`lg:col-span-5 border-r border-slate-800/80 bg-slate-950 flex flex-col ${
+        <div className={`lg:col-span-5 border-r border-zinc-800/80 bg-[#090a0f] flex flex-col ${
           mobileView === 'editor' ? 'block' : 'hidden lg:flex'
         }`}>
           <ResumeEditor />
         </div>
 
         {/* Right Column: Live Resume Preview (7 cols on large screens) */}
-        <div className={`lg:col-span-7 bg-slate-900/50 flex flex-col ${
+        <div className={`lg:col-span-7 bg-[#07080d] flex flex-col ${
           mobileView === 'preview' ? 'block' : 'hidden lg:flex'
         }`}>
           <ResumePreview />

@@ -8,87 +8,87 @@ export default function ProjectsForm() {
   const { projects } = resumeData;
 
   return (
-    <div className="space-y-4 text-left">
+    <div className="space-y-3.5 pt-2 text-left">
       {projects.map((proj, idx) => (
-        <div key={proj.id} className="p-4 bg-slate-900/90 border border-slate-800 rounded-xl space-y-3 relative">
+        <div key={proj.id} className="p-3 bg-[#090b12] border border-zinc-800/80 rounded-xl space-y-2.5 relative">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-indigo-400">Project #{idx + 1}</span>
+            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Project #{idx + 1}</span>
             <button
               type="button"
               onClick={() => removeProject(proj.id)}
-              className="text-slate-400 hover:text-rose-400 p-1 rounded hover:bg-rose-500/10"
+              className="text-zinc-500 hover:text-rose-400 p-1 rounded hover:bg-rose-500/10 cursor-pointer"
               title="Delete Project"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Project Name</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">Project Name</label>
               <div className="relative">
-                <FolderGit2 className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <FolderGit2 className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={proj.name}
                   onChange={(e) => updateProject(proj.id, 'name', e.target.value)}
-                  placeholder="e.g. CineVerse Streaming App"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  placeholder="e.g. CineVerse"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Tech Stack</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">Technologies</label>
               <div className="relative">
-                <Code className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <Code className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={proj.tech}
                   onChange={(e) => updateProject(proj.id, 'tech', e.target.value)}
-                  placeholder="React, TMDB API, Tailwind CSS"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  placeholder="React, Tailwind, API"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Live Demo Link</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">Live URL</label>
               <div className="relative">
-                <LinkIcon className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <LinkIcon className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="url"
                   value={proj.link || ''}
                   onChange={(e) => updateProject(proj.id, 'link', e.target.value)}
-                  placeholder="https://cineverse.vercel.app"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  placeholder="https://..."
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">GitHub Repo Link</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">GitHub Repo</label>
               <div className="relative">
-                <GithubIcon className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <GithubIcon className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="url"
                   value={proj.github || ''}
                   onChange={(e) => updateProject(proj.id, 'github', e.target.value)}
                   placeholder="https://github.com/..."
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
           </div>
 
           <div>
-            <label className="text-[11px] font-semibold text-slate-400 block mb-1">Project Description & Impact</label>
+            <label className="text-[10px] font-medium text-zinc-400 block mb-1">Summary & Highlights</label>
             <textarea
               rows={2}
               value={proj.description}
               onChange={(e) => updateProject(proj.id, 'description', e.target.value)}
-              placeholder="High-performance entertainment platform with debounced search, trailer modals, and responsive layout..."
-              className="w-full p-2.5 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+              placeholder="Key architectural decisions, performance results, and metrics..."
+              className="w-full p-2 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500 leading-relaxed"
             />
           </div>
 
@@ -98,9 +98,9 @@ export default function ProjectsForm() {
       <button
         type="button"
         onClick={addProject}
-        className="w-full py-2.5 border-2 border-dashed border-slate-700 hover:border-indigo-500/50 rounded-xl text-xs font-semibold text-slate-400 hover:text-indigo-400 flex items-center justify-center gap-2 hover:bg-indigo-500/5 transition-all"
+        className="w-full py-2 border border-dashed border-zinc-800 hover:border-zinc-700 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-200 flex items-center justify-center gap-1.5 hover:bg-zinc-800/40 transition-all cursor-pointer"
       >
-        <Plus className="w-4 h-4" /> Add Project
+        <Plus className="w-3.5 h-3.5" /> Add Project
       </button>
     </div>
   );

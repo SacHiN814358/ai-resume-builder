@@ -7,67 +7,67 @@ export default function EducationForm() {
   const { education } = resumeData;
 
   return (
-    <div className="space-y-4 text-left">
+    <div className="space-y-3 pt-2 text-left">
       {education.map((edu, idx) => (
-        <div key={edu.id} className="p-4 bg-slate-900/90 border border-slate-800 rounded-xl space-y-3 relative">
+        <div key={edu.id} className="p-3 bg-[#090b12] border border-zinc-800/80 rounded-xl space-y-2.5 relative">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-indigo-400">Education #{idx + 1}</span>
+            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Education #{idx + 1}</span>
             <button
               type="button"
               onClick={() => removeEducation(edu.id)}
-              className="text-slate-400 hover:text-rose-400 p-1 rounded hover:bg-rose-500/10"
+              className="text-zinc-500 hover:text-rose-400 p-1 rounded hover:bg-rose-500/10 cursor-pointer"
               title="Delete Education"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Institution / University</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">University / College</label>
               <div className="relative">
-                <School className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <School className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={edu.institution}
                   onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
-                  placeholder="Gujarat Technological University"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  placeholder="University Name"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Degree & Major</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">Degree & Major</label>
               <div className="relative">
-                <GraduationCap className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <GraduationCap className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={edu.degree}
                   onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
-                  placeholder="B.Tech in Computer Engineering"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  placeholder="B.Tech in Computer Engg"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Location</label>
+              <label className="text-[10px] font-medium text-zinc-400 block mb-1">Location</label>
               <div className="relative">
-                <MapPin className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                <MapPin className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={edu.location}
                   onChange={(e) => updateEducation(edu.id, 'location', e.target.value)}
                   placeholder="Gujarat, India"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="text-[11px] font-semibold text-slate-400 block mb-1">Graduation Year / Range</label>
+                <label className="text-[10px] font-medium text-zinc-400 block mb-1">Years (e.g. 2018 - 2022)</label>
                 <input
                   type="text"
                   value={edu.startDate && edu.endDate ? `${edu.startDate} - ${edu.endDate}` : (edu.endDate || edu.startDate || '')}
@@ -82,17 +82,17 @@ export default function EducationForm() {
                     }
                   }}
                   placeholder="2018 - 2022"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  className="w-full px-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-[11px] font-semibold text-slate-400 block mb-1">GPA / Score (Optional)</label>
+                <label className="text-[10px] font-medium text-zinc-400 block mb-1">GPA / Score</label>
                 <input
                   type="text"
                   value={edu.gpa || ''}
                   onChange={(e) => updateEducation(edu.id, 'gpa', e.target.value)}
                   placeholder="8.6 / 10.0"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                  className="w-full px-2.5 py-1.5 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
@@ -103,9 +103,9 @@ export default function EducationForm() {
       <button
         type="button"
         onClick={addEducation}
-        className="w-full py-2.5 border-2 border-dashed border-slate-700 hover:border-indigo-500/50 rounded-xl text-xs font-semibold text-slate-400 hover:text-indigo-400 flex items-center justify-center gap-2 hover:bg-indigo-500/5 transition-all"
+        className="w-full py-2 border border-dashed border-zinc-800 hover:border-zinc-700 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-200 flex items-center justify-center gap-1.5 hover:bg-zinc-800/40 transition-all cursor-pointer"
       >
-        <Plus className="w-4 h-4" /> Add Education
+        <Plus className="w-3.5 h-3.5" /> Add Education
       </button>
     </div>
   );

@@ -41,31 +41,27 @@ export default function SkillsForm() {
   };
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-4 pt-2 text-left">
       
-      {/* AI Suggest Skills header banner */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h4 className="text-xs font-bold text-white flex items-center gap-1.5 m-0">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            AI Skills Recommendation
-          </h4>
-          <p className="text-[11px] text-slate-400 m-0">Discover high-priority keywords for "{personalInfo.jobTitle || 'Developer'}"</p>
+      {/* AI Suggest Bar */}
+      <div className="bg-[#090b12] border border-zinc-800 rounded-lg p-2.5 flex items-center justify-between gap-2">
+        <div className="text-xs text-zinc-300">
+          <span>AI Skill Keywords for <span className="text-indigo-400 font-semibold">{personalInfo.jobTitle || 'Role'}</span></span>
         </div>
         <button
           type="button"
           onClick={handleAiSuggest}
           disabled={isSuggesting}
-          className="flex items-center gap-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded-lg transition-all cursor-pointer disabled:opacity-50"
+          className="flex items-center gap-1 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 px-2.5 py-1 rounded-md transition-all cursor-pointer disabled:opacity-50"
         >
           {isSuggesting ? (
             <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              <Loader2 className="w-3 h-3 animate-spin" />
               <span>Analyzing...</span>
             </>
           ) : (
             <>
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-3 h-3" />
               <span>Suggest Skills</span>
             </>
           )}
@@ -74,17 +70,17 @@ export default function SkillsForm() {
 
       {/* Suggested Skills Pill Drawer */}
       {suggestedSkills.length > 0 && (
-        <div className="p-3 bg-indigo-950/30 border border-indigo-500/30 rounded-xl animate-in fade-in">
-          <span className="text-[11px] font-semibold text-indigo-300 block mb-2">Click to add recommended skill:</span>
-          <div className="flex flex-wrap gap-1.5">
+        <div className="p-2.5 bg-indigo-950/20 border border-indigo-500/20 rounded-lg animate-in fade-in">
+          <span className="text-[10px] font-semibold text-indigo-300 block mb-1.5 uppercase tracking-wider">Click to add skill:</span>
+          <div className="flex flex-wrap gap-1">
             {suggestedSkills.map((sk, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handleAddSuggestedSkill(sk, 0)}
-                className="flex items-center gap-1 text-[11px] bg-slate-900 hover:bg-indigo-600 hover:text-white text-slate-300 border border-slate-700/80 px-2.5 py-1 rounded-full transition-all"
+                className="flex items-center gap-1 text-[11px] bg-[#090b12] hover:bg-indigo-600 hover:text-white text-zinc-300 border border-zinc-800 px-2 py-0.5 rounded-md transition-all cursor-pointer"
               >
-                <Plus className="w-3 h-3 text-indigo-400" />
+                <Plus className="w-2.5 h-2.5 text-indigo-400" />
                 {sk}
               </button>
             ))}
@@ -94,53 +90,53 @@ export default function SkillsForm() {
 
       {/* Categories */}
       {skills.map((cat, catIdx) => (
-        <div key={catIdx} className="p-4 bg-slate-900/90 border border-slate-800 rounded-xl space-y-3 relative">
+        <div key={catIdx} className="p-3 bg-[#090b12] border border-zinc-800/80 rounded-xl space-y-2.5 relative">
           <div className="flex items-center justify-between gap-2">
             <input
               type="text"
               value={cat.category}
               onChange={(e) => updateSkillCategoryName(catIdx, e.target.value)}
-              placeholder="Category Name (e.g. Frontend, DevOps)"
-              className="bg-transparent font-bold text-xs text-indigo-400 border-b border-dashed border-slate-700 focus:border-indigo-400 focus:outline-none pb-0.5"
+              placeholder="Category Name"
+              className="bg-transparent font-semibold text-xs text-zinc-200 border-b border-zinc-800 focus:border-indigo-400 focus:outline-none pb-0.5"
             />
             {skills.length > 1 && (
               <button
                 type="button"
                 onClick={() => removeSkillCategory(catIdx)}
-                className="text-slate-500 hover:text-rose-400 p-1 rounded"
-                title="Remove Category"
+                className="text-zinc-500 hover:text-rose-400 p-1 rounded cursor-pointer"
+                title="Remove Group"
               >
-                <Trash2 className="w-3.5 h-3.5" />
+                <Trash2 className="w-3 h-3" />
               </button>
             )}
           </div>
 
           {/* Skill Tag Chips */}
-          <div className="flex flex-wrap gap-1.5 min-h-[32px] p-2 bg-slate-950 rounded-lg border border-slate-800">
+          <div className="flex flex-wrap gap-1 min-h-[28px] p-1.5 bg-[#0f111a] rounded-lg border border-zinc-800/80">
             {cat.items && cat.items.map((item, itemIdx) => (
               <span
                 key={itemIdx}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-800 text-slate-200 border border-slate-700 group hover:border-slate-600 transition-all"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-zinc-800/80 text-zinc-200 border border-zinc-700/60"
               >
                 {item}
                 <button
                   type="button"
                   onClick={() => removeSkillItem(catIdx, itemIdx)}
-                  className="text-slate-500 hover:text-rose-400"
+                  className="text-zinc-400 hover:text-rose-400 cursor-pointer"
                 >
-                  <X className="w-3 h-3" />
+                  <X className="w-2.5 h-2.5" />
                 </button>
               </span>
             ))}
             {(!cat.items || cat.items.length === 0) && (
-              <span className="text-[11px] text-slate-600 italic">No skills added in this group yet.</span>
+              <span className="text-[10px] text-zinc-600 italic">No skills in this group yet.</span>
             )}
           </div>
 
           {/* Add skill item input */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <div className="relative flex-1">
-              <Tag className="w-3 h-3 text-slate-500 absolute left-3 top-3" />
+              <Tag className="w-3 h-3 text-zinc-500 absolute left-2.5 top-2" />
               <input
                 type="text"
                 value={newSkillInputs[catIdx] || ''}
@@ -151,14 +147,14 @@ export default function SkillsForm() {
                     handleAddSkill(catIdx);
                   }
                 }}
-                placeholder="Type skill & press Enter (e.g. Next.js, TypeScript)"
-                className="w-full pl-8 pr-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
+                placeholder="Type skill & press Enter (e.g. Next.js)"
+                className="w-full pl-7 pr-2.5 py-1 bg-[#0f111a] border border-zinc-800 rounded-lg text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
               />
             </div>
             <button
               type="button"
               onClick={() => handleAddSkill(catIdx)}
-              className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition-all"
+              className="px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-medium rounded-lg transition-all cursor-pointer"
             >
               Add
             </button>
@@ -170,9 +166,9 @@ export default function SkillsForm() {
       <button
         type="button"
         onClick={addSkillCategory}
-        className="w-full py-2.5 border-2 border-dashed border-slate-700 hover:border-indigo-500/50 rounded-xl text-xs font-semibold text-slate-400 hover:text-indigo-400 flex items-center justify-center gap-2 hover:bg-indigo-500/5 transition-all"
+        className="w-full py-2 border border-dashed border-zinc-800 hover:border-zinc-700 rounded-lg text-xs font-medium text-zinc-400 hover:text-zinc-200 flex items-center justify-center gap-1.5 hover:bg-zinc-800/40 transition-all cursor-pointer"
       >
-        <Plus className="w-4 h-4" /> Add Skill Category
+        <Plus className="w-3.5 h-3.5" /> Add Skill Category
       </button>
 
     </div>

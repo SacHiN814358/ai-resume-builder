@@ -8,7 +8,7 @@ describe('ResuMate AI Application Integration Tests', () => {
     render(<App />);
     const brandElements = screen.getAllByText(/ResuMate/i);
     expect(brandElements.length).toBeGreaterThan(0);
-    expect(screen.getByText(/ATS-Optimized/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^Resume$/i })).toBeInTheDocument();
   });
 
   it('switches between Resume and Cover Letter tabs', () => {
