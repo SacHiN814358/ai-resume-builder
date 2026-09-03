@@ -34,6 +34,18 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
   const [showColorDropdown, setShowColorDropdown] = useState(false);
   const [showTemplateDropdown, setShowTemplateDropdown] = useState(false);
 
+  // Click outside to close any open dropdown
+  React.useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest('.dropdown-container')) {
+        setShowColorDropdown(false);
+        setShowTemplateDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
+
   const handleJsonExport = () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(resumeData, null, 2));
     const downloadAnchor = document.createElement('a');
@@ -116,7 +128,7 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
           
           {/* Template Selector Dropdown */}
           {activeTab === 'resume' && (
-            <div className="relative">
+            <div className="dropdown-container relative">
               <button
                 onClick={() => {
                   setShowTemplateDropdown(!showTemplateDropdown);
@@ -141,7 +153,7 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
                         setSelectedTemplate(tmpl.id);
                         setShowTemplateDropdown(false);
                       }}
-                      className={`w-full text-left p-2 rounded-lg flex items-start justify-between text-xs transition-all ${
+                      className={`w-full text-left p-2 rounded-lg flex items-start justify-between text-xs transition-all cursor-pointer ${
                         selectedTemplate === tmpl.id
                           ? 'bg-indigo-600/15 text-indigo-300 border border-indigo-500/30'
                           : 'text-zinc-300 hover:bg-zinc-800/80'
@@ -160,7 +172,7 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
           )}
 
           {/* Color Palette Dropdown */}
-          <div className="relative">
+          <div className="dropdown-container relative">
             <button
               onClick={() => {
                 setShowColorDropdown(!showColorDropdown);
@@ -186,7 +198,7 @@ export default function Navbar({ onOpenApiKeyModal, onExportPdf }) {
                         setThemeColor(c);
                         setShowColorDropdown(false);
                       }}
-                      className={`flex items-center gap-1.5 p-1.5 rounded-lg text-xs transition-all ${
+                      className={`flex items-center gap-1.5 p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
                         themeColor.id === c.id
                           ? 'bg-zinc-800 text-white'
                           : 'text-zinc-300 hover:bg-zinc-800/60'

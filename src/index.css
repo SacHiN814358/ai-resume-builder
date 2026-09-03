@@ -12,6 +12,14 @@
     min-height: 100vh;
     letter-spacing: -0.01em;
   }
+
+  button, a, input[type="button"], input[type="submit"], select, label {
+    cursor: pointer !important;
+  }
+
+  canvas {
+    pointer-events: none !important;
+  }
 }
 
 /* Polished subtle scrollbar */
